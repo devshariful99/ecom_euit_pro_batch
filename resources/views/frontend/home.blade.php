@@ -8,6 +8,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1>This is home page</h1>
+                    <a href="{{route('admin.login')}}">Admin Login</a>
                 </div>
             </div>
         </div>
