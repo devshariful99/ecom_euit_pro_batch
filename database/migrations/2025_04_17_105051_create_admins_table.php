@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $this->addMorphAuditColumns($table);
+            $this->addAdminAuditColumns($table);
         });
     }
 

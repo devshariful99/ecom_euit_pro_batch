@@ -55,4 +55,17 @@ class Admin extends Authenticatable
             'status' => 'integer',
         ];
     }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(Admin::class, 'created_by');
+    }
+    public function updatedBy()
+    {
+        return $this->belongsTo(Admin::class, 'updated_by');
+    }
+    public function deletedBy()
+    {
+        return $this->belongsTo(Admin::class, 'deleted_by');
+    }
 }

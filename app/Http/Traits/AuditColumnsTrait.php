@@ -11,9 +11,9 @@ trait AuditColumnsTrait
     public function addAdminAuditColumns(Blueprint $table)
     {
         $table->softDeletes();
-        $table->bigInteger('created_by')->nullable();
-        $table->bigInteger('updated_by')->nullable();
-        $table->bigInteger('deleted_by')->nullable();
+        $table->unsignedBigInteger('created_by')->nullable();
+        $table->unsignedBigInteger('updated_by')->nullable();
+        $table->unsignedBigInteger('deleted_by')->nullable();
 
         $table->foreign('created_by')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
         $table->foreign('updated_by')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
@@ -33,9 +33,9 @@ trait AuditColumnsTrait
     public function addMorphAuditColumns(Blueprint $table)
     {
         $table->softDeletes();
-        $table->bigInteger('creater_id')->nullable();
-        $table->bigInteger('updater_id')->nullable();
-        $table->bigInteger('deleter_id')->nullable();
+        $table->unsignedBigInteger('creater_id')->nullable();
+        $table->unsignedBigInteger('updater_id')->nullable();
+        $table->unsignedBigInteger('deleter_id')->nullable();
 
         $table->string('creater_type')->nullable();
         $table->string('updater_type')->nullable();

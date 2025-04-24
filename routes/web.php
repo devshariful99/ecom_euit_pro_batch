@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\AdminManagement\AdminController;
 use App\Http\Controllers\Backend\Admin\Auth\LoginController;
 use App\Http\Controllers\Backend\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Backend\User\DashboardController as UserDashboardController;
@@ -32,7 +33,14 @@ Route::group(['middleware' => 'guest:admin', 'prefix' => 'admin', 'as' => 'admin
 
 // Admin Auth Routes
 Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::controller(LoginController::class)->group(function(){
+        Route::get('/logout','logout')->name('logout');
+   });
     Route::get('/dashboard',[AdminDashboardController::class, 'dashboard'])->name('dashboard');
+
+    Route::group(['prefix' => 'admin-management', 'as' => 'am.'], function () {
+        Route::resource('admin', AdminController::class);
+    });
 });
 
 

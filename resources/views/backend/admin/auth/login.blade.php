@@ -50,19 +50,29 @@
           <p class="login-box-msg">{{__('Sign in to start your session')}}</p>
           <form action="{{route('admin.login')}}" method="POST">
             @csrf
-            <div class="input-group mb-1">
-              <div class="form-floating">
-                <input id="loginEmail" name="email" type="email" class="form-control" value="{{old('email')}}" placeholder="" />
-                <label for="loginEmail">{{__('Email')}}</label>
-              </div>
-              <div class="input-group-text"><span class="bi bi-envelope"></span></div>
+            <div class="form-group">
+                <div class="input-group mb-1">
+                    <div class="form-floating">
+                      <input id="loginEmail" name="email" type="email" class="form-control" value="{{old('email')}}" placeholder="" />
+                      <label for="loginEmail">{{__('Email')}}</label>
+                    </div>
+                    <div class="input-group-text"><span class="bi bi-envelope"></span></div>
+                  </div>
+                @error('email')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
-            <div class="input-group mb-1">
-              <div class="form-floating">
-                <input id="loginPassword" name="password" type="password" class="form-control" placeholder="" />
-                <label for="loginPassword">{{__('Password')}}</label>
-              </div>
-              <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
+            <div class="form-group">
+                <div class="input-group mb-1">
+                    <div class="form-floating">
+                      <input id="loginPassword" name="password" type="password" class="form-control" placeholder="" />
+                      <label for="loginPassword">{{__('Password')}}</label>
+                    </div>
+                    <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
+                  </div>
+                @error('password')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
             <!--begin::Row-->
             <div class="row">
